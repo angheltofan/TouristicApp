@@ -12,12 +12,21 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int currentIndex = 0; // To track the selected index
-  List pages = [const HomePage(), const SearchPage(), const ProfilePage()];
+
+  // Define pages with specific widgets
+  final List<Widget> pages = [
+    const HomePage(),
+    const SearchPage(),
+    const ProfilePage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[currentIndex], // Display the current page
+      body: IndexedStack(
+        index: currentIndex, // Show the page corresponding to the current index
+        children: pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex, // Reflect the current selected index
         onTap: (index) {
@@ -25,18 +34,22 @@ class _MainPageState extends State<MainPage> {
             currentIndex = index; // Update the current index on tap
           });
         },
+        backgroundColor: const Color.fromARGB(
+            255, 125, 101, 130), // Set the background color
+        selectedItemColor: Colors.white, // Set the selected item color
+        unselectedItemColor: Colors.white24, // Set the unselected item color
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home', // Add a label here
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: 'Search', // Add a label here
+            label: 'Search',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile', // Add a label here
+            label: 'Profile',
           ),
         ],
       ),
