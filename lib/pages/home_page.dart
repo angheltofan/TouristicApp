@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/pages/navPages/caruselPages/africa_page.dart';
+import 'package:flutter_application/pages/navPages/caruselPages/americaPages/New_York.dart';
 import 'package:flutter_application/pages/navPages/caruselPages/america_page.dart';
+import 'package:flutter_application/pages/navPages/caruselPages/asiaPages/Taj_Mahal_Page.dart';
+import 'package:flutter_application/pages/navPages/caruselPages/asiaPages/The_Kremlin_Page.dart';
 import 'package:flutter_application/pages/navPages/caruselPages/asia_page.dart';
+import 'package:flutter_application/pages/navPages/caruselPages/australiaPages/Sydeny_Page.dart';
 import 'package:flutter_application/pages/navPages/caruselPages/australia_page.dart';
 import 'package:flutter_application/pages/navPages/caruselPages/europa_page.dart';
+import 'package:flutter_application/pages/navPages/caruselPages/europePages/Paris_Page.dart';
+import 'package:flutter_application/pages/navPages/caruselPages/europePages/Rome_Page.dart';
 import 'package:flutter_application/widgets/app_LargeText.dart';
+import 'package:flutter_application/widgets/app_mediumText.dart';
 import 'package:flutter_application/widgets/menu_button.dart';
 import 'package:flutter_application/pages/menu_page.dart';
+import 'package:flutter_application/widgets/square_home_page.dart'; // Import the new widget
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,7 +24,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // O listă de imagini pentru fiecare element
+  // List of images for each item
   final List<String> imagePaths = [
     "assets/EuropaCarusel.png",
     "assets/AmericaCarusel.png",
@@ -25,22 +33,51 @@ class _HomePageState extends State<HomePage> {
     "assets/AustraliaCarusel.png",
   ];
 
-  // O listă de pagini pentru fiecare imagine
+  // List of pages for each image
   final List<Widget> pages = [
-    const EuropaPage(), // Pagina pentru prima imagine
-    const AmericaPage(), // Pagina pentru a doua imagine
+    const EuropaPage(), // Page for the first image
+    const AmericaPage(), // Page for the second image
     const AfricaPage(),
     const AsiaPage(),
     const AustraliaPage(),
   ];
 
-  // O listă de nume pentru fiecare imagine
+  // List of names for each image
   final List<String> imageNames = [
     "Europe",
     "America",
     "Africa",
     "Asia",
     "Australia",
+  ];
+
+  // Data for SquareCaruselPages
+  final List<String> squareImagePaths = [
+    "assets/Europe/Rome.png",
+    "assets/Europe/Paris.png",
+    "assets/America/NewYorkCity.png",
+    "assets/Australia/Sydney.png",
+    "assets/Asia/TajMahal.png",
+    "assets/Asia/TheKremlin.png",
+  ];
+
+  final List<String> squareCities = [
+    "Rome",
+    "Paris",
+    "New York",
+    "Sydney",
+    "Taj Mahal",
+    "The Kremlin"
+  ];
+
+  // Example pages to navigate to
+  final List<Widget> squarePages = [
+    const RomePage(),
+    const ParisPage(),
+    const NewYork(),
+    const SydenyPage(),
+    const TajMahalPage(),
+    const TheKremlinPage()
   ];
 
   @override
@@ -51,7 +88,7 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.only(top: 60, left: 20),
+            padding: const EdgeInsets.only(top: 60, left: 20, right: 20),
             child: MenuButton(
               onPressed: () {
                 // Navigate to the MenuPage when the button is pressed
@@ -60,6 +97,7 @@ class _HomePageState extends State<HomePage> {
                   MaterialPageRoute(builder: (context) => const MenuPage()),
                 );
               },
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 30),
@@ -71,16 +109,15 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SizedBox(height: 20),
-          // Înfășoară ListView.builder în SizedBox pentru a-i da o înălțime fixă
+          // Wrap ListView.builder in SizedBox for fixed height
           SizedBox(
-            height: 150, // Setează înălțimea în funcție de nevoi
+            height: 150, // Set height as needed
             child: ListView.builder(
-              itemCount:
-                  imagePaths.length, // Folosim lungimea listei de imagini
+              itemCount: imagePaths.length, // Use the length of the image list
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) => GestureDetector(
                 onTap: () {
-                  // Navighează către pagina specifică atunci când imaginea este apăsată
+                  // Navigate to the specific page when the image is tapped
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => pages[index]),
@@ -99,21 +136,19 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white,
                           image: DecorationImage(
-                            image: AssetImage(
-                                imagePaths[index]), // Imaginea specifică
+                            image:
+                                AssetImage(imagePaths[index]), // Specific image
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Positioned(
-                        bottom:
-                            5, // Poziționează textul la 5px de partea de jos
-                        left:
-                            10, // Poziționează textul la 10px de partea stângă
+                        bottom: 5, // Position text 5px from the bottom
+                        left: 10, // Position text 10px from the left
                         child: Container(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            imageNames[index], // Numele imaginii
+                            imageNames[index], // Name of the image
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -125,6 +160,86 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 20), // Space between carousel and new text
+          Container(
+            margin: const EdgeInsets.only(left: 30),
+            child: AppMediumtext(
+              text: "Our Recommendation",
+              color: Colors.black87,
+              size: 20,
+            ),
+          ),
+          const SizedBox(height: 10), // Space between recommendation and grid
+          // Wrap the grid with Expanded and SingleChildScrollView
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 20), // Add horizontal padding
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Create rows with spacing between them
+                  for (int i = 0; i < squareImagePaths.length; i += 2)
+                    Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 10), // Space between cards
+                                child: AspectRatio(
+                                  aspectRatio:
+                                      1, // Ensure the container is square
+                                  child: SquareCaruselPages(
+                                    image: Image.asset(squareImagePaths[i]),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                squarePages[i]),
+                                      );
+                                    },
+                                    cityName: squareCities[i],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            if (i + 1 < squareImagePaths.length)
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10), // Space between cards
+                                  child: AspectRatio(
+                                    aspectRatio:
+                                        1, // Ensure the container is square
+                                    child: SquareCaruselPages(
+                                      image:
+                                          Image.asset(squareImagePaths[i + 1]),
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  squarePages[i + 1]),
+                                        );
+                                      },
+                                      cityName: squareCities[i + 1],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                        const SizedBox(height: 10), // Space between rows
+                      ],
+                    ),
+                ],
               ),
             ),
           ),

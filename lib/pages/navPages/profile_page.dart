@@ -19,6 +19,7 @@ class ProfilePage extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const MenuPage()),
             );
           },
+          color: Colors.black87,
         ),
       ),
     );

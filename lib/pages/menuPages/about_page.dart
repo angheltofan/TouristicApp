@@ -25,7 +25,7 @@ class AboutPage extends StatelessWidget {
             const SizedBox(height: 20),
             AppMediumtext(
               text:
-                  "\t Welcome to our app, your go-to tool for exploring and discovering the most fascinating corners of the globe! Whether you're passionate about travel, cultural adventures, or simply curious about different regions, our app provides an interactive and informative experience to satisfy your curiosity and desire for exploration.",
+                  "Welcome to our app, your go-to tool for exploring and discovering the most fascinating corners of the globe! Whether you're passionate about travel, cultural adventures, or simply curious about different regions, our app provides an interactive and informative experience to satisfy your curiosity and desire for exploration.",
               color: Colors.black54,
             ),
             const SizedBox(height: 20),

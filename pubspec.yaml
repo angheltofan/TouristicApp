@@ -66,6 +66,27 @@ flutter:
     - assets/AmericaCarusel.png
     - assets/AfricaCarusel.jpg
     - assets/AsiaCarusel.png
+    - assets/Europe/London.png
+    - assets/Europe/Paris.png
+    - assets/Europe/Barcelona.png
+    - assets/Europe/Rome.png
+    - assets/America/GrandCanion.png
+    - assets/America/NewYorkCity.png
+    - assets/America/RioDeJaneiro.png
+    - assets/America/NiagaraFalls.png
+    - assets/Africa/PyramidsofGiza.png
+    - assets/Africa/VictoriaFalls.png
+    - assets/Africa/CapeTown.png
+    - assets/Africa/TableMountain.png
+    - assets/Asia/GoldenPavilion.png
+    - assets/Asia/GreatWallofChina.png
+    - assets/Asia/TajMahal.png
+    - assets/Asia/TheKremlin.png
+    - assets/Australia/Sydney.png
+    - assets/Australia/AyersRock.png
+    - assets/Australia/GreatOceanRoad.png
+    - assets/Australia/Hobart.png
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
