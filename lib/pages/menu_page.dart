@@ -1,8 +1,6 @@
+import 'package:Trekker/pages/menu_buttonPages/dynamic_page.dart';
+import 'package:Trekker/widgets/app_mediumText.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application/pages/menuPages/about_page.dart';
-import 'package:flutter_application/pages/menuPages/contact_page.dart';
-import 'package:flutter_application/pages/menuPages/privacyPolicy_page.dart';
-import 'package:flutter_application/pages/menuPages/settings_page.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
@@ -10,68 +8,65 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 242, 235, 235),
       appBar: AppBar(
         title: const Text('Menu'),
-        backgroundColor: const Color.fromARGB(255, 125, 101, 130),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        backgroundColor: const Color.fromARGB(
+            255, 125, 101, 130), // Culoarea dorită pentru AppBar
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ListTile(
-              title: const Text('Settings'),
-              leading: const Icon(Icons.settings),
-              onTap: () {
-                // Navighează la pagina de setări
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SettingsPage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Privacy policy'),
-              leading: const Icon(Icons.privacy_tip),
-              onTap: () {
-                // Handle navigation or action for Politica de confidențialitate
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const PrivacypolicyPage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Contact'),
-              leading: const Icon(Icons.contact_mail),
-              onTap: () {
-                // Handle navigation or action for Contact
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ContactPage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('About'),
-              leading: const Icon(Icons.info),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const AboutPage()),
-                );
-                // Handle navigation or action for Despre aplicație
-              },
-            ),
-          ],
+      body: Container(
+        color: const Color.fromARGB(255, 242, 235, 235), // Fundalul paginii
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              ListTile(
+                title: AppMediumtext(
+                  text: 'About',
+                  color: Colors.black87,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const DynamicPage(pageName: 'About'),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: AppMediumtext(
+                  text: 'Privacy Policy',
+                  color: Colors.black87,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const DynamicPage(pageName: 'Privacy Policy'),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: AppMediumtext(
+                  text: 'Contact',
+                  color: Colors.black87,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const DynamicPage(pageName: 'Contact'),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

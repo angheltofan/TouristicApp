@@ -7,9 +7,9 @@ class AppMediumtext extends StatelessWidget {
   final Color color;
   AppMediumtext(
       {super.key,
-      this.size = 15,
+      this.size = 18,
       required this.text,
-      this.color = Colors.white});
+      this.color = Colors.black87});
 
   @override
   Widget build(BuildContext context) {

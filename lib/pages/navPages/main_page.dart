@@ -1,7 +1,5 @@
+import 'package:Trekker/pages/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application/pages/home_page.dart';
-import 'package:flutter_application/pages/navPages/profile_page.dart';
-import 'package:flutter_application/pages/navPages/search_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -15,9 +13,7 @@ class _MainPageState extends State<MainPage> {
 
   // Define pages with specific widgets
   final List<Widget> pages = [
-    const HomePage(),
-    const SearchPage(),
-    const ProfilePage(),
+    HomePage(),
   ];
 
   @override

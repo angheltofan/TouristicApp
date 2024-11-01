@@ -1,23 +1,23 @@
+import 'package:Trekker/pages/navPages/main_page.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application/pages/welcome_page.dart';
-//import 'package:flutter_application/pages/welcome_page.dart';
 
 void main() {
+  WidgetsFlutterBinding
+      .ensureInitialized(); // Asigură inițializarea widget-urilor
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
+        title: 'My App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const WelcomePage());
+        home: const MainPage());
   }
 }
